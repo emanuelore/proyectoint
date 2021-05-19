@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout/template :: header">
+</head>
+<body>
+<div class="container">
+	<div class="row">
+		<div class="col-12">
+			<nav th:replace="/layout/template :: navegacion"></nav>
+			<div class="card mt-5">
+				<div class="card-header"></div>
+				<div class="card-body">
+				<a class="btn btn-primary" href="/proveedors/form">Registrar Proveedor</a>
+							<table class="table mt-3">
+							<thead class="thead-dark">
+								<tr>
+									<th scope="col">ID</th>
+									<th scope="col">PROVEEDOR</th>
+									<th scope="col">VENDEDOR</th>
+									<th scope="col">DIRECCION</th>
+									<th scope="col">TELEFONO</th>
+									<th scope="col">EDITAR</th>
+									<th scope="col">ELIMINAR</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="proveedor : ${proveedors}">
+									<th scope="row" th:text="${proveedor.id}"></th>
+									<td th:text="${proveedor.proveedor}"></td>
+									<td th:text="${proveedor.vendedor}"></td>
+									<td th:text="${proveedor.direccion}"></td>
+									<td th:text="${proveedor.telefono}"></td>
+									<td><a class="btn btn-warning"
+										th:href="@{/proveedors/form/} +${proveedor.id}" th:text="Editar"></a></td>
+									<td><a class="btn btn-danger"
+										th:href="@{/proveedors/eliminar/} +${proveedor.id}" th:text="Eliminar" onclick="return confirm('Estas seguro de eliminar')"></a></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+			</div>
+		</div>		
+	</div>
+</div>
+</body>
+</html>
